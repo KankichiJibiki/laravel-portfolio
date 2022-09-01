@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Home')
+@section('jsName', 'main.js')
 
 @section('content')
     @if (session('success_update'))
@@ -11,12 +12,35 @@
     <div class="container d-flex mx-auto">
         {{-- left words that user focuses on --}}
         <div class="w-25 card p-3 me-2 border-success">
-            <h4 class="text-center">Primary Word!</h4>
-            {{-- @if ()
-                <div class="text-muted text-center my-5">No List</div>
-            @else
-
-            @endif --}}
+            <h4 class="text-center">Slot History</h4>
+            <p class="mb-3"><span class="text-danger">Note: </span>Store histories up to 3 content and 1 day</p>
+            @if (Cache::has('oldest'))
+                <a href="" class="container card mb-3">
+                <div class="mb-2">{{cache()->get('oldest')['time']->diffForHumans()}}</div>
+                @foreach (Cache::get('oldest')['wordSet'] as $wordhistory)
+                    <div class="text-muted text-center p-1">{{$wordhistory->word}}</div>
+                @endforeach
+                </a>
+            @endif
+            @if (cache()->has('second'))
+                <a href="" class="container card mb-3">
+                <div class="mb-2">{{cache()->get('second')['time']->diffForHumans()}}</div>
+                @foreach (Cache::get('second')['wordSet'] as $wordhistory)
+                    <div class="text-muted text-center p-1">{{$wordhistory->word}}</div>
+                @endforeach
+                </a>
+            @endif
+            @if (cache()->has('latest'))
+                <a href="" class="container card mb-3">
+                <div class="mb-2">{{cache()->get('latest')['time']->diffForHumans()}}</div>
+                @foreach (Cache::get('latest')['wordSet'] as $wordhistory)
+                    <div class="text-muted text-center p-1">{{$wordhistory->word}}</div>
+                @endforeach
+                </a>
+            @endif
+            @if(!cache()->has('oldest'))
+                <div class="text-muted text-center my-5 fs-3">No History</div>
+            @endif
         </div>
         {{-- right overview word set --}}
         <div class="w-75 card p-3"  style="background-color: #7d4e23;">
@@ -69,11 +93,3 @@
         </div>
     </div>
 @endsection
-<script>
-    function confirm_delete(){
-        let yesOrNo = window.confirm('Are you sure?');
-        console.log('asked');
-        return yesOrNo ? true : false;
-
-    }
-</script>

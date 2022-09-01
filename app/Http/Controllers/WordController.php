@@ -8,26 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
-
-class HistorySlot{
-    // public $wordset;
-    // public $time;
-    public $historyStack;
-
-    // public function __construct(){
-    //     $this->wordset = $wordset;
-    //     $this->time = $time;
-    // }
-
-    public function setWordHistory($wordset, $time){
-        // $this->wordset = $wordset;
-        // $this->time = $time;
-        $this->historyStack[] = [
-            'wordSet' => $wordset,
-            'time' => $time
-        ];
-    }
-}
+use Illuminate\Support\Facades\Cache;
 
 class WordController extends Controller
 {
@@ -39,14 +20,12 @@ class WordController extends Controller
     public $word;
     public $types;
     public $wordSet;
-    public $historyStack;
 
     public function __construct(Word $word){
         $this->now = Carbon::now();
         $this->word = $word;
         $this->types = new Type();
         $this->wordSet = [];
-        // $this->historyStack = new HistorySlot();
     }
 
     public function rules(){
@@ -181,10 +160,32 @@ class WordController extends Controller
             }
         }
 
-        // return $wordMap;
-        // return count($this->wordSet);
+        $this->storeCache();
+
         return view('words.slot')
             ->with('wordSet',$this->wordSet)
             ->with('types', $this->types->all());
+    }
+
+
+    public function storeCache(){
+        $wordCache = [
+            'wordSet'=>$this->wordSet,
+            'time'=>now()
+        ];
+
+        if(Cache::has('latest')){
+            Cache::forget('oldest');
+            $second = Cache::pull('second');
+            Cache::put('oldest', $second, now()->addDay());
+            // Cache::forget('second');
+            $latest = Cache::pull('latest');
+            Cache::put('second', $latest, now()->addDay());
+            // Cache::forget('latest');
+            Cache::put('latest', $wordCache, now()->addDay());
+        }
+        else if(Cache::has('oldest') && Cache::has('second') && !Cache::has('latest')) Cache::put('latest', $wordCache, now()->addDay());
+        else if(Cache::has('oldest')) Cache::put('second', $wordCache, now()->addDay());
+        else Cache::put('oldest', $wordCache, now()->addDay());
     }
 }

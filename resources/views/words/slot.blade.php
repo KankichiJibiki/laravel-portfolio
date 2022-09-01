@@ -5,14 +5,35 @@
 @section('content')
     {{-- history & primary --}}
     <div class="container card p-3 mb-3 d-flex border-success">
-        <h4 class="text-center">Primary Word!</h4>
-        <div class="card">
-            {{-- @if ($historyStack->isNotEmpty())
-                @foreach ($historyStack as $history)
-                    <div>{{$history["wordSet"]}}</div>
-                    <div>{{$history["time"]}}</div>
-                @endforeach
-            @endif --}}
+        <h4 class="text-center mb-3">Slot History</h4>
+        <div class="d-flex">
+            @if (cache()->has('oldest'))
+                <a href="" class="container p-2 border">
+                    <div>{{cache()->get('oldest')['time']->diffForHumans()}}</div>
+                    @foreach (cache()->get('oldest')['wordSet'] as $wordHistory)
+                        <div class="text-muted text-center p-1">{{$wordHistory->word}}</div>
+                    @endforeach
+                </a>
+            @endif
+            @if (cache()->has('second'))
+                <a href="" class="container p-2 border">
+                    <div>{{cache()->get('second')['time']->diffForHumans()}}</div>
+                    @foreach (cache()->get('second')['wordSet'] as $wordHistory)
+                        <div class="text-muted text-center p-1">{{$wordHistory->word}}</div>
+                    @endforeach
+                </a>
+            @endif
+            @if (cache()->has('latest'))
+                <a href="" class="container p-2 border">
+                    <div>{{cache()->get('latest')['time']->diffForHumans()}}</div>
+                    @foreach (cache()->get('latest')['wordSet'] as $wordHistory)
+                        <div class="text-muted text-center p-1">{{$wordHistory->word}}</div>
+                    @endforeach
+                </a>
+            @endif
+            @if(!cache('oldest'))
+                <div class="text-muted text-center my-5 fs-3">No History</div>
+            @endif
         </div>
     </div>
     <div class="container mx-auto">
