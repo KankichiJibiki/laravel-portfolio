@@ -188,4 +188,11 @@ class WordController extends Controller
         else if(Cache::has('oldest')) Cache::put('second', $wordCache, now()->addDay());
         else Cache::put('oldest', $wordCache, now()->addDay());
     }
+
+
+    public function showCache($cache){
+        return view('words.showHistory')
+        ->with('types', $this->types->all())
+        ->with('cache', $cache);
+    }
 }
