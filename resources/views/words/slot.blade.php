@@ -27,9 +27,9 @@
             <div class="my-2 mx-auto d-flex w-100">
                 @foreach ($wordSet as $word)
                     <div class="card p-3 me-1 flex-fill text-light border border-2 border-light" style="background-color: #084d10;">
-                        <div class="mb-3 fs-4">Word: {{$word->word}}</div>
-                        <div class="mb-3 fs-4 d-wrap">Definition: {{$word->definition}}</div>
-                        <div class="mb-3 fs-4">Type: {{$word->type}}</div>
+                        <div class="mb-3 fs-4"><span class="text-warning">Word: </span><br>{{$word->word}}</div>
+                        <div class="mb-3 fs-4 d-wrap"><span class="text-warning">Definition: </span><br>{{$word->definition}}</div>
+                        <div class="mb-3 fs-4"><span class="text-warning">Type: </span><br>{{$word->type}}</div>
                     </div>
                 @endforeach
             </div>

@@ -46,7 +46,7 @@ class WordController extends Controller
         $this->word = $word;
         $this->types = new Type();
         $this->wordSet = [];
-        $this->historyStack = new HistorySlot();
+        // $this->historyStack = new HistorySlot();
     }
 
     public function rules(){
@@ -59,7 +59,8 @@ class WordController extends Controller
 
     public function index()
     {
-        $word_pagination = Word::paginate(10);
+        // $word_pagination = Auth::user()->words::paginate(10);
+        $word_pagination = Word::where('user_id', '=', Auth::id())->paginate(8);
         return view('words.index')
         ->with('words', $word_pagination)
         ->with('types', $this->types->all());
@@ -156,30 +157,34 @@ class WordController extends Controller
     //     ->with('types', $this->types->all());
     // }
 
-    public function createRandoms(){
-        $first_id = $this->word->first()->id;
-        $last_id = $this->word->latest()->first()->id;
-        // if($last_id == null) return null;
-
+    public function createMap(){
+        $wordMapAll = [];
+        $words = Auth::user()->words;
         $count = 0;
-        while($count < 5){
-            $currNum = random_int($first_id, $last_id);
-            // $currNum = random_int(1, $last_id);
-            // echo $currNum . " ";
-            if($this->word->findOrFail($currNum) != null && array_key_exists($currNum, $this->wordSet) != true) {
-                $this->wordSet[$currNum] = $this->word->findOrFail($currNum);
-                $count++;
-            }
+
+        foreach($words as $word){
+            $wordMapAll[$count] = $word;
+            $count++;
         }
+        return $wordMapAll;
     }
 
     public function pickUp(){
-        $this->createRandoms();
-        $this->historyStack->setWordHistory($this->wordSet, $this->now);
+        $wordMap = $this->createMap();
 
+        if(count($wordMap) < 5) $this->wordSet = $wordMap;
+        else {
+            while(count($this->wordSet) < 5){
+                $randomNum = random_int(0, count($wordMap)-1);
+
+                if(array_key_exists($randomNum, $this->wordSet) != true) $this->wordSet[$randomNum] = $wordMap[$randomNum];
+            }
+        }
+
+        // return $wordMap;
+        // return count($this->wordSet);
         return view('words.slot')
             ->with('wordSet',$this->wordSet)
-            ->with('historyStack', $this->historyStack)
             ->with('types', $this->types->all());
     }
 }

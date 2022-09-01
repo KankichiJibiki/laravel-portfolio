@@ -27,6 +27,7 @@
                 </div>
             </div>
             @if ($words->isEmpty())
+            {{-- @if (Auth::user()->words->isEmpty()) --}}
                 <div class="text-center mt-3">
                     <div class="text-light fs-5">You haven't registered any words yet!</div>
 
@@ -42,7 +43,8 @@
             @else
                 <div class="d-flex flex-wrap mt-3">
                     @foreach ($words as $word)
-                        <div class="card p-3 text-light border border-light border-2 me-1 mb-1" style="background-color: #084d10; width:19.5%;">
+                    {{-- @foreach (Auth::user()->words as $word) --}}
+                        <div class="card p-3 text-light border border-light border-2 me-1 mb-1" style="background-color: #084d10; width: 24%;">
                             <div class="row mt-3">
                                 <div class="col">
                                     <a href="/words/{{$word->uuid}}/edit" class="btn btn-warning btn-sm d-grid">Edit</a>
