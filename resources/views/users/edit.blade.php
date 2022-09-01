@@ -3,7 +3,7 @@
 @section('title', 'Profile')
 
 @section('content')
-    <div class="container mx-auto w-50 mt-3 border justify-content-center p-3">
+    <div class="container mx-auto w-50 mt-3 border justify-content-center p-3" style="background-color: #d7f6fa;">
         @if (session('success_update'))
             <div class="alert alert-success">{{session('success_update')}}</div>
         @endif
@@ -11,7 +11,7 @@
             @csrf
             @method('PATCH')
             {{-- img --}}
-            <div class="w-50 mx-auto border me-2 p-2">
+            <div class="w-50 mx-auto border me-2 p-2 bg-light">
                 <h4 class="mb-3">{{Auth::user()->username}}'s Profile</h4>
                 <div class="mb-3">
                 @if (Auth::user()->avatar == null)
@@ -25,8 +25,8 @@
                 </div>
             </div>
             {{-- other info --}}
-            <div class="w-50 mx-auto border p-2">
-                <div class="mb-3">
+            <div class="w-50 mx-auto border p-2 bg-light">
+                <div class="my-3">
                     <label for="username" class="form-label">Username</label>
                     <input type="text" name="username" id="username" class="form-control" value="{{Auth::user()->username}}">
                 </div>
@@ -45,8 +45,8 @@
                     <input type="text" name="email" id="email" class="form-control" value="{{Auth::user()->email}}">
                 </div>
 
-                <div class="mb-3">
-                    <button type="submit" class="btn btn-success">Update</button>
+                <div class="my-3">
+                    <button type="submit" class="btn btn-success w-100">Update</button>
                 </div>
             </div>
         </form>

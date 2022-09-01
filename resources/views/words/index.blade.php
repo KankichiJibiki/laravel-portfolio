@@ -23,7 +23,9 @@
             <div class="d-flex justify-content-center">
                 <div class="col-md-10">{{$words->links()}}</div>
                 <div>
-                    <a href="{{route('displaySlotResult')}}" class="btn btn-lg btn-success text-light border border-light border-3">Slot words</a>
+                    <a href="{{route('displaySlotResult')}}" class="btn btn-lg btn-success text-light border border-light border-3">
+                        <i class="fa-light fa-slot-machine">Slot words</i>
+                    </a>
                 </div>
             </div>
             @if ($words->isEmpty())
