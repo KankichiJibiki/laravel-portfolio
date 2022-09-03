@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('username', '50')->unique();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('email')->unique();
+            $table->string('email', '100')->unique();
             $table->string('avatar', '50')->nullable();
             // $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
