@@ -70,7 +70,7 @@
                 <div class="d-flex flex-wrap mt-3">
                     @foreach ($words as $word)
                     {{-- @foreach (Auth::user()->words as $word) --}}
-                        <div class="card p-3 text-light border border-light border-2 me-1 mb-1" style="background-color: #084d10; width: 24%;">
+                        <div class="card p-3 text-light border border-light border-2 me-1 mb-1 flex-fill" style="background-color: #084d10; width: 24%;">
                             <div class="row mt-3">
                                 <div class="col">
                                     <a href="/words/{{$word->uuid}}/edit" class="btn btn-warning btn-sm d-grid">Edit</a>
