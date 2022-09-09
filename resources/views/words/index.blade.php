@@ -9,46 +9,49 @@
     @elseif (session('success_create'))
         <div class="alert alert-success">{{session('success_create')}}</div>
     @endif
-    <div class="container d-flex mx-auto">
-        {{-- left words that user focuses on --}}
-        <div class="w-25 card p-3 me-2 border-success">
+    <div class="main_container container mx-auto">
+        {{-- left and top words that user focuses on --}}
+        <div class="left_top_container card p-3 mb-3 border-success">
             <h4 class="text-center">Slot History</h4>
             <p class="mb-3"><span class="text-danger">Note: </span>Store histories up to 3 content and 1 day</p>
-            @if (Cache::has('oldest'))
-                <a href="{{route('showCache', 'oldest')}}" class="container card mb-3">
-                <div class="mb-2">{{cache()->get('oldest')['time']->diffForHumans()}}</div>
-                @foreach (Cache::get('oldest')['wordSet'] as $wordhistory)
-                    <div class="text-muted text-center p-1">{{$wordhistory->word}}</div>
-                @endforeach
-                </a>
-            @endif
-            @if (cache()->has('second'))
-                <a href="{{route('showCache', 'second')}}" class="container card mb-3">
-                <div class="mb-2">{{cache()->get('second')['time']->diffForHumans()}}</div>
-                @foreach (Cache::get('second')['wordSet'] as $wordhistory)
-                    <div class="text-muted text-center p-1">{{$wordhistory->word}}</div>
-                @endforeach
-                </a>
-            @endif
-            @if (cache()->has('latest'))
-                <a href="{{route('showCache', 'latest')}}" class="container card mb-3">
-                <div class="mb-2">{{cache()->get('latest')['time']->diffForHumans()}}</div>
-                @foreach (Cache::get('latest')['wordSet'] as $wordhistory)
-                    <div class="text-muted text-center p-1">{{$wordhistory->word}}</div>
-                @endforeach
-                </a>
-            @endif
-            @if(!cache()->has('oldest'))
-                <div class="text-muted text-center my-5 fs-3">No History</div>
-            @endif
+            <div class="cache_container">
+
+                @if (Cache::has('oldest'))
+                    <a href="{{route('showCache', 'oldest')}}" class="cache_anchor container card mb-3">
+                    <div class="mb-2">{{cache()->get('oldest')['time']->diffForHumans()}}</div>
+                    @foreach (Cache::get('oldest')['wordSet'] as $wordhistory)
+                        <div class="text-muted text-center p-1">{{$wordhistory->word}}</div>
+                    @endforeach
+                    </a>
+                @endif
+                @if (cache()->has('second'))
+                    <a href="{{route('showCache', 'second')}}" class="cache_anchor container card mb-3">
+                    <div class="mb-2">{{cache()->get('second')['time']->diffForHumans()}}</div>
+                    @foreach (Cache::get('second')['wordSet'] as $wordhistory)
+                        <div class="text-muted text-center p-1">{{$wordhistory->word}}</div>
+                    @endforeach
+                    </a>
+                @endif
+                @if (cache()->has('latest'))
+                    <a href="{{route('showCache', 'latest')}}" class="cache_anchor container card mb-3">
+                    <div class="mb-2">{{cache()->get('latest')['time']->diffForHumans()}}</div>
+                    @foreach (Cache::get('latest')['wordSet'] as $wordhistory)
+                        <div class="text-muted text-center p-1">{{$wordhistory->word}}</div>
+                    @endforeach
+                    </a>
+                @endif
+                @if(!cache()->has('oldest'))
+                    <div class="text-muted text-center my-5 fs-3">No History</div>
+                @endif
+            </div>
         </div>
-        {{-- right overview word set --}}
-        <div class="w-75 card p-3"  style="background-color: #7d4e23;">
-            <div class="d-flex justify-content-center">
+        {{-- right and down overview word set --}}
+        <div class="right_down_container container card p-3 mb-3"  style="background-color: #7d4e23; width: 70%;">
+            <div class="header_slot d-flex">
                 <div class="col-md-10">{{$words->links()}}</div>
                 <div>
                     <a href="{{route('displaySlotResult')}}" class="btn btn-lg btn-success text-light border border-light border-3">
-                        <i class="fa-light fa-slot-machine">Slot words</i>
+                        Slot Words
                     </a>
                 </div>
             </div>
@@ -67,10 +70,10 @@
                     {{-- end modal --}}
                 </div>
             @else
-                <div class="d-flex flex-wrap mt-3">
+                <div class="card_container mt-3">
                     @foreach ($words as $word)
                     {{-- @foreach (Auth::user()->words as $word) --}}
-                        <div class="card p-3 text-light border border-light border-2 me-1 mb-1 flex-fill" style="background-color: #084d10; width: 24%;">
+                        <div class="card_child card p-3 text-light border border-light border-2 me-1 mb-1" style="background-color: #084d10;">
                             <div class="row mt-3">
                                 <div class="col">
                                     <a href="/words/{{$word->uuid}}/edit" class="btn btn-warning btn-sm d-grid">Edit</a>

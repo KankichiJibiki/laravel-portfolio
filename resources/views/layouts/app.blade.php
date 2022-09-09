@@ -9,6 +9,8 @@
 
     <title>{{ config('app.name', 'Laravel')}}/@yield('title')</title>
 
+    <link rel="stylesheet" href="/css/style.css">
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
