@@ -79,14 +79,14 @@
                                                     @method('post')
                                                     <div class="mb-3">
                                                         <div class="form-text">Word</div>
-                                                        <input type="text" name="word" id="word" class="form-control">
+                                                        <input type="text" name="word" id="word" class="form-control" value="{{old('word')}}">
                                                         @error('word')
-                                                            <div class="text-danger">{{$message}}</div>
+                                                            <div class="text-danger" >{{$message}}</div>
                                                         @enderror
                                                     </div>
                                                     <div class="mb-4">
                                                         <div class="form-text">Definition</div>
-                                                        <input type="text" name="definition" id="definition" class="form-control">
+                                                        <input type="text" name="definition" id="definition" class="form-control" value="{{old('definition')}}">
                                                         @error('definition')
                                                             <div class="text-danger">{{$message}}</div>
                                                         @enderror

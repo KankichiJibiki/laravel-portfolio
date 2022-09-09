@@ -31,7 +31,7 @@ class WordController extends Controller
     public function rules(){
         return [
             'word' => ['required', 'string', 'max:50'],
-            'definition' => ['required', 'string', 'max:50'],
+            'definition' => ['required', 'string', 'max:150'],
             'words_type_id' => ['required'],
         ];
     }
