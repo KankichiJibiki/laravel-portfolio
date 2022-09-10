@@ -51,8 +51,10 @@
                 <div class="col-md-10">{{$words->links()}}</div>
                 <div>
                     <a href="{{route('displaySlotResult')}}" class="btn btn-lg btn-success text-light border border-light border-3">
-                        Slot Words
+                        <span class="toolTip" data-descr="You slot 5 numbers and it applies to words id displaying">Slot Words</span>
                     </a>
+
+                    <span class='tooltip' data-descr="each of a pair of flashing lights on a vehicle, warning that it is stationary or unexpectedly slowing down or reversing.">
                 </div>
             </div>
             @if ($words->isEmpty())

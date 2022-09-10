@@ -27,6 +27,16 @@
     .header_slot{
         justify-content: space-between;
     }
+
+    .toolTip:hover:after{
+        background: gray;
+        border-radius: 5px;
+        color: white;
+        content: attr(data-descr);
+        padding: 5px;
+        position: absolute;
+        width: 20%;
+    }
 }
 
 @media screen and (max-width: 1200px) {
