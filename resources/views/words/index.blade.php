@@ -75,7 +75,7 @@
                 <div class="card_container mt-3">
                     @foreach ($words as $word)
                     {{-- @foreach (Auth::user()->words as $word) --}}
-                        <div class="word-card card_child card p-3 text-light border border-light border-2 me-1 mb-1" style="background-color: #084d10;">
+                        <div class="card_child card p-3 text-light border border-light border-2 me-1 mb-1" style="background-color: #084d10;">
                             <div class="row mt-3">
                                 <div class="col">
                                     <a href="/words/{{$word->uuid}}/edit" class="btn btn-warning btn-sm d-grid">Edit</a>

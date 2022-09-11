@@ -3,84 +3,54 @@
     --blackboard-color:#084d10;
 }
 
-.word-card{
+.fixed-btn-slot{
+    visibility: hidden;
+}
+
+
+.main_container{
+    display: inline-flex;
+    position: relative;
+    justify-content: space-around;
+}
+
+.left_top_container{
+    width: 25%;
+    /* flex-grow: 1; */
+}
+
+.right_down_container{
+    width: 75%;
+    background-color: var(--sideblackboard-color);
+}
+
+.card_container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card_child{
+    width: 220px;
     background-color: var(--blackboard-color);
 }
 
-.fixed-btn-slot{
-    position: fixed;
-    border-radius: 50%;
-    bottom: 10%;
-    right: 10%;
-    width: 80px;
-    height: auto;
-    padding: 1rem;
-    color: black;
-    background-color: #084d10;
-    opacity: .2;
+.header_slot{
+    justify-content: space-around;
 }
 
-.fixed-btn-slot:hover{
-    opacity: 1;
-}
-
-@media screen and (max-width: 1800px) {
-
-    .main_container{
-        display: inline-flex;
-        position: relative;
-        justify-content: space-around;
-    }
-
-    .left_top_container{
-        width: 25%;
-        /* flex-grow: 1; */
-    }
-
-    .right_down_container{
-        width: 75%;
-        background-color: var(--sideblackboard-color);
-    }
-
-    .card_container{
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .card_child{
-        flex-basis: 24%;
-    }
-
-    .header_slot{
-        justify-content: space-around;
-    }
-
-    .toolTip:hover:after{
-        background: gray;
-        border-radius: 5px;
-        color: white;
-        content: attr(data-descr);
-        padding: 5px;
-        position: absolute;
-        width: 20%;
-    }
-}
-
-@media screen and (max-width: 1200px) {
-    .card_child{
-        flex-basis: 32%;
-    }
-}
-
-@media screen and (max-width: 1000px) {
-    .card_child{
-        flex-basis: 48.5%;
-    }
+.toolTip:hover:after{
+    background: gray;
+    border-radius: 5px;
+    color: white;
+    content: attr(data-descr);
+    padding: 5px;
+    position: absolute;
+    width: 20%;
 }
 
 
-
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 762px) {
     .main_container{
         display: inline-block;
         /* width: 100%; */
@@ -96,16 +66,34 @@
 
     .card_container{
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
     }
 
     .card_child{
-        flex-basis: 100%;
+        width: 100%;
     }
 
     .cache_container {
         display: flex;
         justify-content: space-between;
+    }
+
+    .fixed-btn-slot{
+        visibility: visible;
+        position: fixed;
+        border-radius: 50%;
+        bottom: 10%;
+        right: 3%;
+        width: 80px;
+        height: auto;
+        padding: 1rem;
+        color: black;
+        background-color: #edaf58;
+        opacity: .2;
+    }
+
+    .fixed-btn-slot:hover{
+        opacity: 1;
     }
 
 }
