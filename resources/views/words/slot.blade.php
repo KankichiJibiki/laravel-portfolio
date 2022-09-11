@@ -10,7 +10,7 @@
             <h4 class="text-center mb-3">Slot History</h4>
             <div class="cache_container">
                 @if (cache()->has('oldest'))
-                    <a href="" class="container card p-2">
+                    <a href="{{route('showCache', 'oldest')}}" class="container card p-2">
                         <div>{{cache()->get('oldest')['time']->diffForHumans()}}</div>
                         @foreach (cache()->get('oldest')['wordSet'] as $wordHistory)
                             <div class="text-muted text-center p-1">{{$wordHistory->word}}</div>
@@ -18,7 +18,7 @@
                     </a>
                 @endif
                 @if (cache()->has('second'))
-                    <a href="" class="container card p-2">
+                    <a href="{{route('showCache', 'second')}}" class="container card p-2">
                         <div>{{cache()->get('second')['time']->diffForHumans()}}</div>
                         @foreach (cache()->get('second')['wordSet'] as $wordHistory)
                             <div class="text-muted text-center p-1">{{$wordHistory->word}}</div>
@@ -26,7 +26,7 @@
                     </a>
                 @endif
                 @if (cache()->has('latest'))
-                    <a href="" class="container card p-2">
+                    <a href="{{route('showCache', 'latest')}}" class="container card p-2">
                         <div>{{cache()->get('latest')['time']->diffForHumans()}}</div>
                         @foreach (cache()->get('latest')['wordSet'] as $wordHistory)
                             <div class="text-muted text-center p-1">{{$wordHistory->word}}</div>
