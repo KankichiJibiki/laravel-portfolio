@@ -46,7 +46,7 @@
             </div>
         </div>
         {{-- right and down overview word set --}}
-        <div class="right_down_container container card p-3 mb-3"  style="background-color: #7d4e23; width: 70%;">
+        <div class="right_down_container container card p-3 mb-3"  style="background-color: #7d4e23;">
             <div class="header_slot d-flex">
                 <div class="col-md-10">{{$words->links()}}</div>
                 <div>
@@ -75,7 +75,7 @@
                 <div class="card_container mt-3">
                     @foreach ($words as $word)
                     {{-- @foreach (Auth::user()->words as $word) --}}
-                        <div class="card_child card p-3 text-light border border-light border-2 me-1 mb-1" style="background-color: #084d10;">
+                        <div class="word-card card_child card p-3 text-light border border-light border-2 me-1 mb-1" style="background-color: #084d10;">
                             <div class="row mt-3">
                                 <div class="col">
                                     <a href="/words/{{$word->uuid}}/edit" class="btn btn-warning btn-sm d-grid">Edit</a>

@@ -183,6 +183,11 @@
         </nav>
 
         <main class="container py-4">
+            {{-- fixed btn --}}
+            <a href="{{route('displaySlotResult')}}" class="fixed-btn-slot text-center text-light text-decoration-none">
+                <span class="toolTip" data-descr="You slot 5 numbers and it applies to words id displaying">Slot</span>
+            </a>
+
             @yield('content')
         </main>
     </div>

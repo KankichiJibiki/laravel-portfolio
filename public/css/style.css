@@ -1,18 +1,45 @@
+:root{
+    --sideblackboard-color:#7d4e23;
+    --blackboard-color:#084d10;
+}
+
+.word-card{
+    background-color: var(--blackboard-color);
+}
+
+.fixed-btn-slot{
+    position: fixed;
+    border-radius: 50%;
+    bottom: 10%;
+    right: 10%;
+    width: 80px;
+    height: auto;
+    padding: 1rem;
+    color: black;
+    background-color: #084d10;
+    opacity: .2;
+}
+
+.fixed-btn-slot:hover{
+    opacity: 1;
+}
+
 @media screen and (max-width: 1800px) {
+
     .main_container{
         display: inline-flex;
         position: relative;
-        justify-content: space-between;
+        justify-content: space-around;
     }
 
     .left_top_container{
-        width: 30%;
+        width: 25%;
         /* flex-grow: 1; */
     }
 
     .right_down_container{
-        width: 70%;
-        /* flex-grow: 2; */
+        width: 75%;
+        background-color: var(--sideblackboard-color);
     }
 
     .card_container{
@@ -25,7 +52,7 @@
     }
 
     .header_slot{
-        justify-content: space-between;
+        justify-content: space-around;
     }
 
     .toolTip:hover:after{
