@@ -3,6 +3,10 @@
     --blackboard-color:#084d10;
 }
 
+.btn:active{
+    transform: scale(0.9);
+}
+
 .fixed-btn-slot{
     visibility: hidden;
 }
