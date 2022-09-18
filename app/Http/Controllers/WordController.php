@@ -39,7 +39,7 @@ class WordController extends Controller
     public function index()
     {
         // $word_pagination = Auth::user()->words::paginate(10);
-        $word_pagination = Word::where('user_id', '=', Auth::id())->paginate(8);
+        $word_pagination = Word::where('user_id', '=', Auth::id())->paginate(6);
         return view('words.index')
         ->with('words', $word_pagination)
         ->with('types', $this->types->all());
