@@ -12,7 +12,7 @@
     <div class="main_container container">
         <div class="col-lg-12 col-11 d-flex flex-wrap justify-content-around align-items-start border">
             {{-- left and top words that user focuses on --}}
-            <div class="left_top_container col-lg-4 col-12 border p-3 mb-3 border-success">
+            <div class="left_top_container col-lg-4 col-12 p-3 mb-3 border-success">
                 <h4 class="text-center">Slot History</h4>
                 <p class="mb-3"><span class="text-danger">Note: </span>Store histories up to 3 content and 1 day</p>
                 <div class="cache_container">
@@ -77,10 +77,10 @@
                         {{-- @foreach (Auth::user()->words as $word) --}}
                             <div class="card_child card col-12 col-lg-4 p-3 text-light border border-light border-2 mb-1" style="background-color: #084d10;">
                                 <div class="row mt-3 justify-content-center">
-                                    <div class="col-md-5 col-12">
+                                    <div class="col-md-5 col-6">
                                         <a href="/words/{{$word->uuid}}/edit" class="btn btn-warning btn-sm d-grid">Edit</a>
                                     </div>
-                                    <div class="col-md-5 col-12">
+                                    <div class="col-md-5 col-6">
                                         <form action="/words/{{$word->uuid}}" method="post" class="d-grid">
                                             @csrf
                                             @method('delete')
@@ -90,12 +90,14 @@
                                 </div>
                                 <div class="fs-5 mb-3">Word: <span class="fw-bold fs-4">{{$word->word}}</span></div>
                                 <div class="fs-5 mb-3">Definition: <span class="fw-bold fs-4">{{$word->definition}}</span></div>
-                                <div class="fs-5 mb-3">Type: <span class="fw-bold fs-4">{{$word->type == null ? "null" : $word->type}}</span></div>
+                                <div class="fs-5 mb-3">Type: <span class="fw-bold fs-4">
+                                    {{$word->type->name}}    
+                                </span></div>
                             </div>
                         @endforeach
                     </div>
-                    <div class="d-flex aligh-items-center justify-content-center">
-                        <div class="col-12">
+                    <div class="d-flex flex-wrap aligh-items-center justify-content-center">
+                        <div class="">
                             {{$words->links()}}
                         </div>
                     </div>

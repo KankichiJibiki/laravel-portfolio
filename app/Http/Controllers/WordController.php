@@ -32,13 +32,16 @@ class WordController extends Controller
         return [
             'word' => ['required', 'string', 'max:50'],
             'definition' => ['required', 'string', 'max:150'],
-            'words_type_id' => ['required'],
+            'type_id' => ['required'],
         ];
     }
 
     public function index()
     {
-        // $word_pagination = Auth::user()->words::paginate(10);
+        // $word = $this->word->all()->first();
+        // $type = $word->type;
+        // return $word;
+
         $word_pagination = Word::where('user_id', '=', Auth::id())->paginate(6);
         return view('words.index')
         ->with('words', $word_pagination)

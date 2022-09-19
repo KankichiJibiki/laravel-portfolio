@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Type;
 
 class Word extends Model
 {
@@ -12,7 +13,7 @@ class Word extends Model
     protected $fillable = [
         'uuid',
         'user_id',
-        'words_type_id',
+        'type_id',
         'word',
         'definition',
     ];

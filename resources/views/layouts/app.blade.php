@@ -92,13 +92,13 @@
                                                         @enderror
                                                     </div>
                                                     <div class="mb-4">
-                                                        <select name="words_type_id" id="words_type_id" class="form-select">
+                                                        <select name="type_id" id="type_id" class="form-select">
                                                             <option value="" hidden>Select a word type</option>
                                                             @foreach ($types as $type)
-                                                                <option value="{{$type->id}}">{{$type->type}}</option>
+                                                                <option value="{{$type->id}}">{{$type->name}}</option>
                                                             @endforeach
                                                         </select>
-                                                        @error('words_type_id')
+                                                        @error('type_id')
                                                             <div class="text-danger">{{$message}}</div>
                                                         @enderror
                                                     </div>
@@ -136,8 +136,8 @@
                                                     @method('post')
 
                                                     <div class="mb-3">
-                                                        <label for="type" class="form-label">Type</label>
-                                                        <input type="text" name="type" id="type" class="form-control">
+                                                        <label for="name" class="form-label">Name</label>
+                                                        <input type="text" name="name" id="name" class="form-control">
                                                     </div>
                                                     <div class="mb-3">
                                                         <button type="submit" class="btn btn-outline-primary w-100">Add!</button>
@@ -147,7 +147,7 @@
                                                 <ul class="list-group">
                                                     <h5 class="text-center mt-3">Type Overview</h5>
                                                     @foreach ($types as $type)
-                                                        <li class="list-group-item mb-1">{{$type->type}}</li>
+                                                        <li class="list-group-item mb-1">{{$type->name}}</li>
                                                     @endforeach
                                                 </ul>
                                             </div>

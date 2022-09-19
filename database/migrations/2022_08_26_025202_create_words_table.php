@@ -17,13 +17,13 @@ return new class extends Migration
             $table->id();
             $table->uuid();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('words_type_id');
+            $table->unsignedBigInteger('type_id');
             $table->string('word');
             $table->string('definition');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('words_type_id')->references('id')->on('types');
+            $table->foreign('type_id')->references('id')->on('types');
         });
     }
 
