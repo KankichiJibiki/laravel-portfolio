@@ -16,7 +16,7 @@
                     <div class="card_child card col-12 col-lg-4 p-3 text-light border border-light border-2 mb-1" style="background-color: #084d10;">
                         <div class="mb-3 fs-4"><span class="text-warning">Word: </span><br>{{$word->word}}</div>
                         <div class="mb-3 fs-4 d-wrap"><span class="text-warning">Definition: </span><br>{{$word->definition}}</div>
-                        <div class="mb-3 fs-4"><span class="text-warning">Type: </span><br>{{$word->type}}</div>
+                        <div class="mb-3 fs-4"><span class="text-warning">Type: </span><br>{{$word->type->name}}</div>
                     </div>
                 @endforeach
             </div>
