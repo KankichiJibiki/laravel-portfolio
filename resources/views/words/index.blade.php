@@ -10,7 +10,7 @@
         <div class="alert alert-success">{{session('success_create')}}</div>
     @endif
     <div class="main_container container">
-        <div class="col-lg-12 col-11 d-flex flex-wrap justify-content-around align-items-start border">
+        <div class="col-lg-12 col-11 d-flex flex-wrap justify-content-around align-items-start">
             {{-- left and top words that user focuses on --}}
             <div class="left_top_container col-lg-4 col-12 p-3 mb-3 border-success">
                 <h4 class="text-center">Slot History</h4>
