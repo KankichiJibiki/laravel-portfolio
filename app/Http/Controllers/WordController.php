@@ -42,7 +42,7 @@ class WordController extends Controller
         // $type = $word->type;
         // return $word;
 
-        $word_pagination = Word::where('user_id', '=', Auth::id())->paginate(6);
+        $word_pagination = Word::where('user_id', '=', Auth::id())->latest()->paginate(6);
         return view('words.index')
         ->with('words', $word_pagination)
         ->with('types', $this->types->all());
