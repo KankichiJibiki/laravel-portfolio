@@ -26,6 +26,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/words/slot', [WordController::class, 'pickUp'])->name('displaySlotResult');
     Route::get('/words/{cache}', [WordController::class, 'showCache'])->name('showCache');
     Route::resource('/words', WordController::class)->except('index');
+        Route::post('/words/search', [WordController::class, 'search_result'])->name('search_result');
     Route::resource('/types', TypeController::class)->except('index');
     Route::resource('/users', UserController::class)->except(('index'));
 });

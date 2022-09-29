@@ -49,12 +49,33 @@
             {{-- right and down overview word set --}}
             <div class="right_down_container col-lg-7 col-12 p-3 mb-3" style="background-color: #7d4e23;">
                 <div class="header_slot d-flex flex-wrap justify-content-center">
-                    <div class="col-12 d-flex justify-content-center">
-                        <a href="{{route('displaySlotResult')}}" class="btn btn-lg btn-success text-light border border-light border-3 col-4">
+                    <div class="col-12 d-flex flex-wrap justify-content-between">
+                        <a href="{{route('displaySlotResult')}}" class="btn btn-success text-light border border-light border-3 col-md-3 col-5 mb-2">
                             <span class="toolTip" data-descr="You slot 5 numbers and it applies to words id displaying">Slot</span>
                         </a>
 
-                        <span class='tooltip' data-descr="each of a pair of flashing lights on a vehicle, warning that it is stationary or unexpectedly slowing down or reversing.">
+                        {{-- <span class='tooltip' data-descr="each of a pair of flashing lights on a vehicle, warning that it is stationary or unexpectedly slowing down or reversing."> --}}
+                        <form action="{{ route('search_result') }}" method="post" class="col-12 col-md-7">
+                            @csrf
+
+                            <div class="input-group">
+                                {{-- <div class="d-flex me-1 mt-2">
+                                    <div class="form-check form-check-inline">
+                                        <label for="1" class="form-label text-light">Word</label>
+                                        <input type="radio" name="search_type" id="1" class="form-check-input" value="1">
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <label for="2" class="form-label text-light">Type</label>
+                                        <input type="radio" name="search_type" id="2" class="form-check-input" value="2">
+                                    </div>
+                                </div> --}}
+
+                                <input type="text" name="q" id="q" class="form-control" placeholder="Search in...">
+                                <button type="submit" class="btn btn-dark input-group-btn">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 @if ($words->isEmpty())

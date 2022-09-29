@@ -49,12 +49,24 @@
             
             <div class="right_down_container col-lg-7 col-12 p-3 mb-3" style="background-color: #7d4e23;">
                 <div class="header_slot d-flex flex-wrap justify-content-center">
-                    <div class="col-12 d-flex justify-content-center">
-                        <a href="<?php echo e(route('displaySlotResult')); ?>" class="btn btn-lg btn-success text-light border border-light border-3 col-4">
+                    <div class="col-12 d-flex flex-wrap justify-content-between">
+                        <a href="<?php echo e(route('displaySlotResult')); ?>" class="btn btn-success text-light border border-light border-3 col-md-3 col-5 mb-2">
                             <span class="toolTip" data-descr="You slot 5 numbers and it applies to words id displaying">Slot</span>
                         </a>
 
-                        <span class='tooltip' data-descr="each of a pair of flashing lights on a vehicle, warning that it is stationary or unexpectedly slowing down or reversing.">
+                        
+                        <form action="<?php echo e(route('search_result')); ?>" method="post" class="col-12 col-md-7">
+                            <?php echo csrf_field(); ?>
+
+                            <div class="input-group">
+                                
+
+                                <input type="text" name="q" id="q" class="form-control" placeholder="Search in...">
+                                <button type="submit" class="btn btn-dark input-group-btn">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <?php if($words->isEmpty()): ?>

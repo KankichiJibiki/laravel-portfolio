@@ -198,4 +198,22 @@ class WordController extends Controller
         ->with('types', $this->types->all())
         ->with('cache', $cache);
     }
+
+
+    public function search_result(Request $request){
+        $q = $request->q;
+        // $search_type = $request->search_type;
+
+        // if($search_type == 1){
+            $result = $this->word->where('word', 'LIKE', '%'.$q.'%')->orWhere('definition', 'LIKE', '%'.$q.'%')->paginate(6);
+        // } else {
+        //     $result_type = $this->types->where('name', 'LIKE', '%'.$q.'%')->get();
+        //     $result = $result_type;
+        //     return $result_type->words;
+        // }
+
+        return view('words.index')
+        ->with('words', $result)
+        ->with('types', $this->types->all());
+    }
 }
